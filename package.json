@@ -1,6 +1,6 @@
 {
   "description": "A Flatiron HTTP application",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "dependencies": {
     "union": "0.1.7",
@@ -13,7 +13,7 @@
   },
   "scripts": {
     "test": "vows --spec",
-    "start": "node app.js"
+    "start": "node server.js"
   },
   "name": "perezvon",
   "subdomain": "perezvon",
