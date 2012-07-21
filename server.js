@@ -1,5 +1,5 @@
 var flatiron = require('flatiron'),
-    plates = require('plates'),
+    swig = require('swig'),
     path = require('path'),
     app = flatiron.app;
 
@@ -7,14 +7,19 @@ app.config.file({ file: path.join(__dirname, 'config', 'config.json') });
 
 app.use(flatiron.plugins.http);
 
+swig.init({
+    root: __dirname + '/views',
+    cache: false
+});
+
 // Custom plugin to say just hello world
 var helloworld = require('./lib/plugins/helloworld.js');
 app.use(helloworld);
 
 app.router.get('/', function () {
-    var html = '<html><h1 id="greet">Hello World</h1></html>';
+    var tmpl = swig.compileFile('top.html');
     var data = { "greet": "こんにちは世界" };
-    var output = plates.bind(html, data);
+    var output = tmpl.render(data);
 
     app.hello("Flatiron");
     app.log.debug("request headers", this.req.headers);
