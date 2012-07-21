@@ -1,14 +1,12 @@
 {
   "description": "A Flatiron HTTP application",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "dependencies": {
-    "union": "0.1.7",
-    "flatiron": "0.1.17",
-    "plates": "0.4.6"
+    "union": "0.3.3",
+    "flatiron": "0.2.5"
   },
   "devDependencies": {
-    "api-easy": "0.3.2",
     "vows": "0.6.1"
   },
   "scripts": {
