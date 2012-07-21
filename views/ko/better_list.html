@@ -3,7 +3,7 @@
 {% block content %}
 <section>
   <header class="page-header">
-    <h1>Simple List</h1>
+    <h1>Better List</h1>
   </header>
   <div class="row">
     <div class="span12">
@@ -13,14 +13,19 @@
         <button type="submit" class="btn" data-bind="enable: itemToAdd().length > 0">Add</button>
 
         <label>Your items:</label>
-        <select multiple="multiple" width="50" data-bind='options: items'></select>
+        <select multiple="multiple" height="5" data-bind="options:allItems, selectedOptions:selectedItems"></select>
+
+        <div>
+          <button class="btn btn-danger" data-bind="click: removeSelected, enable: selectedItems().length > 0">Remove</button>
+          <button class="btn" data-bind="click: sortItems, enable: allItems().length > 0">Sort</button>
+        </div>
       </form>
     </div>
   </div>
 </section>
 <script defer="defer">
 window.addEventListener("DOMContentLoaded", function() {
-  ko.applyBindings(new SimpleListModel(["Alpha", "Beta", "Gamma"]));
+  ko.applyBindings(new BetterListModel(["Alpha", "Beta", "Gamma"]));
 });
 </script>
 {% endblock %}

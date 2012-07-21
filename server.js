@@ -42,6 +42,13 @@ app.router.get('/ko/simple_list', function () {
     this.res.end(output);
 });
 
+app.router.get('/ko/better_list', function () {
+    var tmpl = swig.compileFile('ko/better_list.html');
+    var output = tmpl.render({});
+    this.res.writeHead(200, { 'Content-Type': 'text/html;charset=UTF-8' });
+    this.res.end(output);
+});
+
 app.router.get('/test/:name', function(name) {
     this.res.writeHead(200, { 'Content-Type': 'text/html;charset=UTF-8' });
     this.res.end('/test/' + name + '?_method=get');
