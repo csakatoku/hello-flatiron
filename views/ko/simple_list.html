@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+  <header class="page-header">
+    <h1>Simple List</h1>
+  </header>
+  <div class="row">
+    <div class="span12">
+      <form data-bind="submit: addItem" class="well">
+        <label>New Item:</label>
+        <input data-bind="value: itemToAdd, valueUpdate: 'afterkeydown'" />
+        <button type="submit" class="btn" data-bind="enable: itemToAdd().length > 0">Add</button>
+
+        <label>Your items:</label>
+        <select multiple="multiple" width="50" data-bind='options: items'></select>
+      </form>
+    </div>
+  </div>
+</section>
+<script defer="defer" src="/js/ko/SimpleListModel.js"></script>
+<script defer="defer">
+window.addEventListener("DOMContentLoaded", function() {
+  ko.applyBindings(new SimpleListModel(["Alpha", "Beta", "Gamma"]));
+});
+</script>
+{% endblock %}
