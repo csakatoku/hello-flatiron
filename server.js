@@ -1,11 +1,18 @@
 var flatiron = require('flatiron'),
     swig = require('swig'),
+    connect = require('connect'),
     path = require('path'),
     app = flatiron.app;
 
 app.config.file({ file: path.join(__dirname, 'config', 'config.json') });
 
-app.use(flatiron.plugins.http);
+app.use(flatiron.plugins.http, {
+    before: [
+        connect.static('public')
+    ],
+
+    after: []
+});
 
 swig.init({
     root: __dirname + '/views',

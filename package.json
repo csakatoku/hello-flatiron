@@ -3,6 +3,7 @@
   "version": "0.0.2",
   "private": true,
   "dependencies": {
+    "connect": "*",
     "swig": "0.11.2",
     "union": "0.3.3",
     "flatiron": "0.2.5"
