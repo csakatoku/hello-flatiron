@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+  <header class="page-header">
+    <h1>Paged Grid</h1>
+  </header>
+  <div class="row">
+    <div class="span12">
+      <h2>Contacts</h2>
+      <table class="contactsEditor table">
+        <thead>
+          <tr>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Phone numbers</th>
+          </tr>
+        </thead>
+        <tbody data-bind="foreach: contacts">
+          <tr>
+            <td>
+              <input data-bind="value: firstName" />
+              <div><a href="#" data-bind="click: $root.removeContact">Delete</a></div>
+            </td>
+            <td>
+              <input data-bind="value: lastName" />
+            </td>
+            <td>
+              <table>
+                <tbody data-bind="foreach: phones">
+                  <tr>
+                    <td><input data-bind="value: type" /></td>
+                    <td><input data-bind="value: number" /></td>
+                    <td><a href="#" data-bind="click: $root.removePhone">Delete</a></td>
+                  </tr>
+                </tbody>
+              </table>
+              <a href="#" data-bind="click: $root.addPhone">Add number</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <p>
+        <button data-bind="click: addContact">Add a contact</button>
+        <button data-bind="click: save, enable: contacts().length > 0">Save to JSON</button>
+      </p>
+      <textarea data-bind="value: lastSavedJson" rows="5" cols="60" diabled="disabled"></textarea>
+    </div><!-- span12 -->
+  </div><!-- row -->
+</section>
+{% endblock %}
+
+{% block javascript %}
+<script>
+$(function() {
+  var initialData = [
+    { firstName: "Danny", lastName: "LaRusso", phones: [
+        { type: "Mobile", number: "(555) 121-2121" },
+        { type: "Home", number: "(555) 123-4567"}]
+    },
+    { firstName: "Sensei", lastName: "Miyagi", phones: [
+        { type: "Mobile", number: "(555) 444-2222" },
+        { type: "Home", number: "(555) 999-1212"}]
+    }
+  ];
+
+  ko.applyBindings(new ContactsModel(initialData));
+});
+</script>
+{% endblock %}

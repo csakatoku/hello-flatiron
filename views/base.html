@@ -37,6 +37,7 @@
             <ul class="nav">
               <li><a href="/ko/simple_list">Simple List</a></li>
               <li><a href="/ko/better_list">Better List</a></li>
+              <li><a href="/ko/contacts_editor">Contacts Editor</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -47,6 +48,9 @@
       {% block content %}{% endblock %}
     </div> <!-- /container -->
   </body>
+  <script src="/js/vendor/jquery-1.7.1.min.js"></script>
   <script src="/js/vendor/knockout-latest.debug.js"></script>
   <script src="/js/app.debug.js"></script>
+
+{% block javascript %}{% endblock %}
 </html>

@@ -18,8 +18,11 @@
     </div>
   </div>
 </section>
-<script defer="defer">
-window.addEventListener("DOMContentLoaded", function() {
+{% endblock %}
+
+{% block javascript %}
+<script>
+$(function() {
   ko.applyBindings(new SimpleListModel(["Alpha", "Beta", "Gamma"]));
 });
 </script>
